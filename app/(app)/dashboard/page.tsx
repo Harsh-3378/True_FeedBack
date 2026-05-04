@@ -26,7 +26,7 @@ const Dashboard = () => {
     const [copied, setCopied] = useState(false)
 
     const handleDeleteMessage = (messageId: string) => {
-        setMessages(messages.filter((message) => message._id !== messageId))
+        setMessages(messages.filter((message) => String(message._id) !== messageId))
     } 
 
     const {data: session} = useSession();
