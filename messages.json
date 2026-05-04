@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Message from Alex",
+        "content": "Are we still meeting later today?",
+        "received": "5 minutes ago"
+    },
+    {
+        "title": "Message from Priya",
+        "content": "Don't forget to submit your assignment.",
+        "received": "30 minutes ago"
+    },
+    {
+        "title": "Message from Rahul",
+        "content": "Check out this cool project I found!",
+        "received": "1 hour ago"
+    },
+    {
+        "title": "Message from Sneha",
+        "content": "Happy Birthday! Have an amazing day 🎉",
+        "received": "3 hours ago"
+    },
+    {
+        "title": "Message from John",
+        "content": "Can you review my PR when you get time?",
+        "received": "Yesterday"
+    },
+    {
+        "title": "Message from Unknown",
+        "content": "You’ve won a surprise gift! 🎁",
+        "received": "2 days ago"
+    }
+]
