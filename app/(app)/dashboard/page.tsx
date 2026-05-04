@@ -10,6 +10,7 @@ import axios, { AxiosError } from 'axios';
 import { Loader2, RefreshCcw, Copy, Check, Link2, MessageSquare, TrendingUp } from 'lucide-react';
 import { User } from 'next-auth';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -24,12 +25,13 @@ const Dashboard = () => {
     const [isSwitchLoading, setIsSwitchLoading] = useState(false)
     const [isInitialLoading, setIsInitialLoading] = useState(true)
     const [copied, setCopied] = useState(false)
+    const router = useRouter()
 
     const handleDeleteMessage = (messageId: string) => {
         setMessages(messages.filter((message) => String(message._id) !== messageId))
     } 
 
-    const {data: session} = useSession();
+    const {data: session, status} = useSession();
 
     const form = useForm({
         resolver: zodResolver(acceptMessageSchema),
@@ -103,7 +105,14 @@ const Dashboard = () => {
         }
     }
 
-    if(!session || !session.user){
+    // Redirect to home if not authenticated
+    useEffect(() => {
+        if(status === 'unauthenticated'){
+            router.push('/')
+        }
+    }, [status, router])
+
+    if(status === 'loading' || !session || !session.user){
         return (
           <div className="flex items-center justify-center min-h-screen">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
